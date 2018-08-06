@@ -1,12 +1,13 @@
-import { mapServerData } from './mappers';
+'use strict';
 
-export function loadList() {
-  return fetch('/api/stations')
-    .then(response => response.json())
-    .then(mapServerData);
-}
+import {mapServerData} from './mappers';
 
-export function loadDetails(id) 
-{
-  return fetch(`/api/stations/${id}`).then(response => response.json());
+export const loadList = () => {
+    return fetch('/api/stations')
+        .then(response => response.json())
+        .then(mapServerData);
+};
+
+export const loadDetails = (id) => {
+    return fetch(`/api/stations/${id}`).then(response => response.json());
 }

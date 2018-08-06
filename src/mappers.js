@@ -1,27 +1,29 @@
-export function mapServerData(serverData) {
-  return {
-    type: "FeatureCollection",
-    features: serverData.map((obj, index) => ({
-      id: index,
-      type: "Feature",
-      isActive: obj.isActive,
-      geometry: 
-      {
-        type: "Point",
-        coordinates: [obj.long, obj.lat]
-      },
-      properties: {
-        iconCaption: obj.serialNumber
-      },
-      options: {
-        preset: getObjectPreset(obj)
-      }
-    }))
-  };
-}
+'use strict';
 
-function getObjectPreset(obj) {
-  return obj.isActive
-    ? 'islands#blueCircleDotIconWithCaption'
-    : 'islands#redCircleDotIconWithCaption';
-}
+export const mapServerData = (serverData) => {
+    return {
+        type: "FeatureCollection",
+        features: serverData.map((obj, index) => ({
+            id: index,
+            type: "Feature",
+            isActive: obj.isActive,
+            geometry:
+                {
+                    type: "Point",
+                    coordinates: [obj.long, obj.lat]
+                },
+            properties: {
+                iconCaption: obj.serialNumber
+            },
+            options: {
+                preset: getObjectPreset(obj)
+            }
+        }))
+    };
+};
+
+const getObjectPreset = (obj) => {
+    return obj.isActive
+        ? 'islands#blueCircleDotIconWithCaption'
+        : 'islands#redCircleDotIconWithCaption';
+};

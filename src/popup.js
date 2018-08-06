@@ -1,17 +1,19 @@
-function getTableRowHtml(obj) {
+'use strict';
+
+const getTableRowHtml = (obj) => {
     return `
         <tr>
             <td>${obj.id}</td>
             <td>${obj.operator}</td>
         </tr>
     `;
-}
+};
 
-export function getPopupContent(obj) {
+export const getPopupContent = (obj) => {
 
     const htmlStatus = obj.isActive
         ? `<div class="station-info-active">active</div>`
-        : `<div class="station-info-defective">defective</div>`
+        : `<div class="station-info-defective">defective</div>`;
 
     let content = `
         <div class="station-info">
@@ -36,11 +38,10 @@ export function getPopupContent(obj) {
                 <tbody>
                     ${htmlRows}
                 </tbody>
-            </table>
-        `;
+            </table>`;
 
         htmlInfo += htmlTable;
     }
 
     return content;
-}
+};
